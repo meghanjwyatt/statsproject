@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import numpy
 
 '''
 Compute mean confidence limits via simulation
