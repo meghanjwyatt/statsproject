@@ -180,6 +180,7 @@ class UserDataSet(object):
             self.load()
         if not self.requiredsize is None and self.data.shape[0] != self.requiredsize:
             print("The data set required should have length {:d}, but a data set of "
-                  "length {:d} was entered. Please re-enter the data set.")
+                  "length {:d} was entered. Please re-enter the data set."\
+                  .format(self.requiredsize, self.data.shape[0]))
             self.load()
             
