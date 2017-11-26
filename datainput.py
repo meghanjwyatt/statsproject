@@ -34,7 +34,7 @@ def input1():
     
     msg2 = "Please enter the second sample, which should be the same length "
            "as the first sample."
-    dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape).data
+    dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape[0]).data
     
     return dataset1, dataset2
 
