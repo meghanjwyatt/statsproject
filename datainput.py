@@ -133,8 +133,8 @@ class UserDataSet(object):
             self.inputfilepath = inputfilepath
             
         
-    def load_from_file(self, filepath):
-        self.data = numpy.loadtxt(filepath)
+    def load_from_file(self):
+        self.data = numpy.loadtxt(self.inputfilepath)
         
     def load_manually(self):
         print("Begin entering data. After each data point, press the Enter "
