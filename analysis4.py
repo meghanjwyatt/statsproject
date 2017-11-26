@@ -25,11 +25,11 @@ def run(dataset, alpha=0.05):
     sample_means.sort()
     
     # lower confidence limit
-    lcl = numpy.percentile(sample_means, alpha/2)
+    lcl = numpy.percentile(sample_means, 100*alpha/2)
     
     # upper confidence limit
-    ucl = numpy.percentile(sample_means, 1-alpha/2)
+    ucl = numpy.percentile(sample_means, 100*(1-alpha/2))
     
-    print("The {:.04f}% confidence interval for the given sample is {:.04e} to {:.04e}"\
+    print("The {:.04f}% confidence interval for the mean of the given sample is {:.04e} to {:.04e}"\
           .format(100*(1-alpha), lcl, ucl))
     
