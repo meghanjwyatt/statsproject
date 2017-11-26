@@ -48,7 +48,8 @@ Analysis options:
             analysis1.run(dataset1, dataset2)
             
         if self.analysistype == '2':
-            'continue here'
+            pass
             
-        
+if __name__ == "__main__":
+    StatsTool()
 
