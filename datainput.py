@@ -25,6 +25,16 @@ allow input of single values, for use with (5a) large and small sample tests for
 population mean.
 '''
 
+def input1():
+    '''
+    Get input for a Q-Q plot of x/y data
+    '''
+    msg1 = "Please enter the first data set."
+    dataset1 = UserDataSet(msg1).data
+    msg2 = "Please enter the second data set, which should be the same length "
+           "as the first data set."
+    dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape)
+
 class UserDataSet(object):
     '''
     Framework for loading user-specified data. Enables input of data via files
