@@ -15,7 +15,20 @@ def run(dataset, alpha=0.05):
         # generate synthetic sample
         synthetic_sample = numpy.random.choice(dataset, size=len(dataset))
         # calculate mean of synthetic sample
-        
+        sample_mean = synthetic_sample.mean()
         # append mean to sample_means (list)
-       
+        sample_means.append(sample_mean)
+        
+    # Calculate the confidence interval of sample means
+    # first, order the sample means
+    sample_means.sort()
+    
+    # lower confidence limit
+    lcl = numpy.percentile(sample_means, alpha/2)
+    
+    # upper confidence limit
+    ucl = numpy.percentile(sample_means, 1-alpha/2)
+    
+    print("The {:.04d}% confidence interval for the given sample is {:.04e} to {:.04e}"\
+          .format(100*(1-alpha), lcl, ucl))
     
