@@ -152,7 +152,7 @@ class UserDataSet(object):
         self.requiredsize = requiredsize 
         self.load(msg=msg)
         
-    def load(self, msg='')
+    def load(self, msg=''):
         self.prompt_user(msg)
         if self.use_file_input:
             self.load_from_file()
