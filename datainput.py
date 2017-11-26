@@ -72,7 +72,8 @@ def input5a():
     '''
     msg = "Please enter the values of the sample."
     dataset = UserDataSet(msg).data
-    proposedmean = float(input("Please enter the proposed mean"))
+    proposedmean = float(input("Please enter the proposed mean and press then "
+                               "press the enter key\n"))
     return dataset, proposedmean
 
 def input5b():
@@ -129,9 +130,9 @@ def binary_query(msg, default=True):
     return False if the response is no.
     '''
     if default == True:
-        suffix = 'Y/n'
+        suffix = 'Y/n\n'
     else:
-        suffix = 'y/N'
+        suffix = 'y/N\n'
     response = input(msg + ' ' + suffix)
     if response.lower() == 'y' or response.lower() == 'yes':
         return True
@@ -169,7 +170,7 @@ class UserDataSet(object):
         inputfilepath = input("If you wish to load data from a file "
                               "(newline-buffered, ASCII-format), enter the "
                               "file name here. To enter data manually, press "
-                              "the Enter key.")
+                              "the Enter key.\n")
         if inputfilepath.strip() == '':
             self.use_file_input = False
         else:
