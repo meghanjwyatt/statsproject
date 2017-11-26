@@ -153,7 +153,7 @@ class UserDataSet(object):
         # enters something like "Done" or "DONE" instead of "done" (lowercase).
         # Check if the user is finished entering values for this data set.
         while inputstr.lower() != 'done':
-            input = input()
+            inputstr = input()
             
             # If the user entered what looks like a numerical value
             if inputstr.lower() != 'done':
@@ -178,7 +178,7 @@ class UserDataSet(object):
             print("The file you specified contains multiple columns of data. Please "
                   "specify a file containing only a single column of numerical data.")
             self.load()
-        if self.requiredsize is not None and self.data.shape[0] != self.requiredsize:
+        if not self.requiredsize is None and self.data.shape[0] != self.requiredsize:
             print("The data set required should have length {:d}, but a data set of "
                   "length {:d} was entered. Please re-enter the data set.")
             self.load()
