@@ -30,6 +30,6 @@ def run(dataset, alpha=0.05):
     # upper confidence limit
     ucl = numpy.percentile(sample_means, 1-alpha/2)
     
-    print("The {:.04d}% confidence interval for the given sample is {:.04e} to {:.04e}"\
+    print("The {:.04f}% confidence interval for the given sample is {:.04e} to {:.04e}"\
           .format(100*(1-alpha), lcl, ucl))
     
