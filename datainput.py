@@ -32,8 +32,8 @@ def input1():
     msg1 = "Please enter the first sample."
     dataset1 = UserDataSet(msg1).data
     
-    msg2 = "Please enter the second sample, which should be the same length "
-           "as the first sample."
+    msg2 = ("Please enter the second sample, which should be the same length "
+           "as the first sample.")
     dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape[0]).data
     
     return dataset1, dataset2
@@ -110,9 +110,9 @@ def input6():
     '''
     msg1 = "Input the x values."
     x_values = UserDataSet(msg1).data
-    msg2 = "Input the y values. The number of y values should be the same as the "
+    msg2 = ("Input the y values. The number of y values should be the same as the "
            "number of x values, and the i^th y value should correspond to the "
-           "i^th x value."
+           "i^th x value.")
     y_values = UserDataSet(msg2, requiredsize = x_values.shape[0]).data
     # Query the user regarding the inclusion of error bars
     includeerrorbars = binary_query("Would you like to include error bars?")
