@@ -48,8 +48,46 @@ Analysis options:
             dataset1, dataset2 = datainput.input1()
             analysis1.run(dataset1, dataset2)
             
-        if self.analysistype == '2':
-            pass
+        elif self.analysistype == '2':
+            dataset = datainput.input2()
+            analysis2.run(dataset)
+            
+        elif self.analysistype == '3':
+            dataset1, dataset2 = datainput.input3()
+            analysis3.run(dataset1, dataset2)
+            
+        elif self.analysistype == '4':
+            dataset = datainput.input4()
+            analysis4.run(dataset)
+            
+        elif self.analysistype == '5a':
+            dataset, proposedmean = datainput.input5a()
+            analysis5a.run(dataset, proposedmean)
+            
+        elif self.analysistype == '5b':
+            dataset1, dataset2 = datainput.input5b()
+            analysis5b.run(dataset1, dataset2)
+            
+        elif self.analysistype == '5c':
+            dataset1, dataset2 = datainput.input5c()
+            analysis5c.run(dataset1, dataset2)
+            
+        elif self.analysistype.startswith('6'):
+            x_values, y_values, y_errors = dataipnut.input6()
+            if self.analysistype == '6a':
+                analysis6a.run(x_values, y_values, y_errors)
+            elif self.analysistype == '6b':
+                analysis6b.run(x_values, y_values, y_errors)
+            elif self.analysistype == '6d':
+                analysis6d.run(x_values, y_values, y_errors)
+            else:
+                print("Invalid analysis type entered.")
+                exit(1)
+        elif self.analysistype == '7':
+            pass # This will need to be implemented
+        else:
+            print("Invalid analysis type entered.")
+            exit(1)
             
 if __name__ == "__main__":
     StatsTool()
