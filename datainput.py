@@ -31,6 +31,7 @@ def input1():
     '''
     msg1 = "Please enter the first data set."
     dataset1 = UserDataSet(msg1).data
+    
     msg2 = "Please enter the second data set, which should be the same length "
            "as the first data set."
     dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape)
@@ -41,12 +42,17 @@ class UserDataSet(object):
     or via ``manual`` user input. Load a single data set.
     '''
     def __init__(self, msg, requiredsize=None):
+        self.requiredsize = requiredsize 
+        self.load(msg=msg)
+        
+    def load(self, msg='')
         self.prompt_user(msg)
         if self.use_file_input:
             self.load_from_file()
         else:
             self.load_manually()
-            
+        self.check_data()
+        
     def prompt_user(self, msg):
         '''
         Prompt the user with the message ``msg``, and ask the user whether
@@ -103,3 +109,14 @@ class UserDataSet(object):
         # At this point, the user has finished entering the data. Now just convert
         # the list to a numpy array, for consistency with self.load_from_file
         self.data = numpy.array(data)
+        
+    def check_data(self):
+        if self.data.ndim > 1:
+            print("The file you specified contains multiple columns of data. Please "
+                  "specify a file containing only a single column of numerical data.")
+            self.load()
+        if self.requiredsize is not None and self.data.shape[0] != self.requiredsize:
+            print("The data set required should have length {:d}, but a data set of "
+                  "length {:d} was entered. Please re-enter the data set.")
+            self.load()
+            
