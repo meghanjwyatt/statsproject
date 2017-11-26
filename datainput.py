@@ -29,12 +29,75 @@ def input1():
     '''
     Get input for a Q-Q plot of x/y data
     '''
-    msg1 = "Please enter the first data set."
+    msg1 = "Please enter the first sample."
     dataset1 = UserDataSet(msg1).data
     
-    msg2 = "Please enter the second data set, which should be the same length "
-           "as the first data set."
-    dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape)
+    msg2 = "Please enter the second sample, which should be the same length "
+           "as the first sample."
+    dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape).data
+    
+    return dataset1, dataset2
+
+def input2():
+    '''
+    Get input computing mean confidence limits.
+    '''
+    msg = "Please enter the values of the sample."
+    dataset = UserDataSet(msg).data
+    return dataset
+
+def input3():
+    '''
+    Get input for computing confidence limits for the difference between two samples
+    '''
+    msg1 = "Please enter the first sample."
+    dataset1 = UserDataSet(msg1).data
+    
+    msg2 = "Please enter the second sample."
+    dataset2 = UserDataSet(msg2).data
+    return dataset1, dataset2
+
+def input4():
+    '''
+    Get input for computing confidence limits of a sample using simulation
+    '''
+    msg = "Please enter the values of the sample."
+    dataset = UserDataSet(msg).data
+    return dataset
+
+def input5a():
+    '''
+    Get input for testing the hypothesis that the mean of a specified sample is 
+    equal to a specified value.
+    '''
+    msg = "Please enter the values of the sample."
+    dataset = UserDataSet(msg).data
+    proposedmean = float(input("Please enter the proposed mean"))
+    return dataset, proposedmean
+
+def input5b():
+    '''
+    Get input for testing whether there is a difference between two means.
+    '''
+    msg1 = "Please enter the values of the first sample."
+    dataset1 = UserDataSet(msg1).data
+    msg2 = "Please enter the values of the second sample."
+    dataset2 = UserDataSet(msg2).data
+    return dataset1, dataset2
+
+def input5c():
+    '''
+    Get input for a chi-squared test.
+    '''
+    msg1 = "Input the number of values in each category, for the first group."
+    dataset1 = UserDataSet(msg1).data
+    msg2 = "Input the number of values in each category, for the second group."
+    dataset2 = UserDataSet(msg2).data
+    return dataset1, dataset2
+
+def input6a():
+    
+    
 
 class UserDataSet(object):
     '''
