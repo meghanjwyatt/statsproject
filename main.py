@@ -40,7 +40,8 @@ Analysis options:
 '''
         print(msg)
         self.analysistype = input("Please input the number (or number/letter "
-                                  "combination) of the desired analysis.")
+                                  "combination) of the desired analysis, and then "
+                                  "press Enter.\n")
                                   
     def run(self):
         if self.analysistype == '1':
