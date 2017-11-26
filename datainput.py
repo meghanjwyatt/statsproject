@@ -95,8 +95,52 @@ def input5c():
     dataset2 = UserDataSet(msg2).data
     return dataset1, dataset2
 
-def input6a():
+def input6():
+    '''
+    Get input for calculating correlation coefficient of x/y data, carrying 
+    out hypothesis testing on the correlation coefficient, or performing a linear
+    regression on the x/y data.
     
+    Return the following:
+        x_values: numpy array of the x values
+        y_values: numpy array of the y values, where the i^th y value
+            corresponds to the i^th x value.
+        y_errors: if specified, a numpy array of error bars (e.g., standard
+            deviations) for the y values. If not specified, return None.
+    '''
+    msg1 = "Input the x values."
+    x_values = UserDataSet(msg1).data
+    msg2 = "Input the y values. The number of y values should be the same as the "
+           "number of x values, and the i^th y value should correspond to the "
+           "i^th x value."
+    y_values = UserDataSet(msg2, requiredsize = x_values.shape[0]).data
+    # Query the user regarding the inclusion of error bars
+    includeerrorbars = binary_query("Would you like to include error bars?")
+    if includeerrorbars:
+        msg3 = "Input the error bars associated with y values."
+        y_errors = UserDataSet(msg3, requiredsize = x_values.shape[0]).data
+    else:
+        y_errors = None
+    return x_values, y_values, y_errors
+
+def binary_query(msg, default=True):
+    '''
+    Query the user with the yes/no question ``msg``. Return True if the response is yes, and
+    return False if the response is no.
+    '''
+    if default == True:
+        suffix = 'Y/n'
+    else:
+        suffix = 'y/N'
+    response = input(msg + ' ' + suffix)
+    if response.lower() == 'y' or response.lower() == 'yes':
+        return True
+    elif response.lower() == 'n' or response.lower() == 'no':
+        return False
+    # If the user response is not y/yes/n/no, call this function again, printing an error
+    # message.
+    else:
+        binary_query("Invalid response.  Please type yes or no.", default=default)
     
 
 class UserDataSet(object):
