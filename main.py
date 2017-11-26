@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-import argparse
-import numpy
 
 class StatsTool(object):
     def __init__(self):
