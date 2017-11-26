@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import datainput
 import analysis1
+import analysis4
 
 
 class StatsTool(object):
