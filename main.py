@@ -1,8 +1,12 @@
 #!/usr/bin/env python
+import datainput
+import analysis1
+
 
 class StatsTool(object):
     def __init__(self):
         self.get_analysis_type()
+        self.run()
         
     def get_analysis_type(self):
         '''
@@ -38,6 +42,13 @@ Analysis options:
         self.analysistype = input("Please input the number (or number/letter "
                                   "combination) of the desired analysis.")
                                   
-        
+    def run(self):
+        if self.analysistype == '1':
+            dataset1, dataset2 = datainput.input1()
+            analysis1.run(dataset1, dataset2)
+            
+        if self.analysistype == '2':
+            'continue here'
+            
         
 
