@@ -2,6 +2,15 @@
 
 class StatsTool(object):
     def __init__(self):
+        self.get_analysis_type()
+        
+    def get_analysis_type(self):
+        '''
+        Prompt the user with analysis options. Set the attribute
+        ``self.analysistype`` to the number or number/letter combination
+        specified by the user.
+        '''
+        
         msg = \
 '''
 -----------------------------
@@ -26,8 +35,9 @@ Analysis options:
 
 '''
         print(msg)
-        analysistype = input("Please input the number (or number/letter combination) "
-                             "of the desired analysis.")
+        self.analysistype = input("Please input the number (or number/letter "
+                                  "combination) of the desired analysis.")
+                                  
         
         
 
