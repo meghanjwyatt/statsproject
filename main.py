@@ -18,11 +18,11 @@ class StatsTool(object):
         
         msg = \
 '''
------------------------------
+--------------------------------------------------------------------------------
 statstool.py
 
 By Meghan Wyatt and David Lee
------------------------------
+--------------------------------------------------------------------------------
 
 Analysis options:
 1) Plot a Q-Q plot for a set of x/y data
@@ -70,8 +70,8 @@ Analysis options:
             analysis5b.run(dataset1, dataset2)
             
         elif self.analysistype == '5c':
-            dataset1, dataset2 = datainput.input5c()
-            analysis5c.run(dataset1, dataset2)
+            datasets= datainput.input5c()
+            analysis5c.run(datasets)
             
         elif self.analysistype.startswith('6'):
             x_values, y_values, y_errors = dataipnut.input6()
