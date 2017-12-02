@@ -29,7 +29,17 @@ def run(dataset1, dataset2, tails, alpha=0.05):
     n < 30) or z distributed (large sample, n > 30), with variance estimated
     from the sample variances of dataset1 and dataset2.
     '''
-    t_statistic, p_value = scipy.stats.ttest_ind(dataset1, dataset2)
+    # small sample
+    if n < 30:
+        t_statistic, p_value = scipy.stats.ttest_ind(dataset1, dataset2)
+    # large sample
+    else:
+        n1 = dataset1.shape[0]
+        n2 = dataset2.shape[0]
+        effective_n = numpy.sqrt(n1*n1/(n1+n2)) # need to check
+        sigma = #??? 
+        difference = abs(dataset1.mean() - dataset2.mean())
+        p = 2*scipy.stats.norm.cdf(-difference, loc=0, scale=sigma)
 
     # account for one-tailed vs two-tailed tests
     p_value /= tails
