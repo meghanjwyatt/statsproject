@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import numpy
+import query
 
 '''
 Types of data that may need to be loaded:
@@ -97,7 +98,7 @@ def input5c():
     datasets.append(UserDataSet(msg2).data)
 
     dataset_idx = 3
-    add_dataset = binary_query("Enter another sample?")
+    add_dataset = query.binary_query("Enter another sample?")
     while add_dataset:
         msg = "Input the number of values in ech category, for group #{:d}"\
               .format(dataset_idx)
@@ -126,7 +127,7 @@ def input6():
            "i^th x value.")
     y_values = UserDataSet(msg2, requiredsize = x_values.shape[0]).data
     # Query the user regarding the inclusion of error bars
-    includeerrorbars = binary_query("Would you like to include error bars?")
+    includeerrorbars = query.binary_query("Would you like to include error bars?")
     if includeerrorbars:
         msg3 = "Input the error bars associated with y values."
         y_errors = UserDataSet(msg3, requiredsize = x_values.shape[0]).data
@@ -134,25 +135,6 @@ def input6():
         y_errors = None
     return x_values, y_values, y_errors
 
-def binary_query(msg, default=True):
-    '''
-    Query the user with the yes/no question ``msg``. Return True if the response is yes, and
-    return False if the response is no.
-    '''
-    if default == True:
-        suffix = 'Y/n\n'
-    else:
-        suffix = 'y/N\n'
-    response = input(msg + ' ' + suffix)
-    if response.lower() == 'y' or response.lower() == 'yes':
-        return True
-    elif response.lower() == 'n' or response.lower() == 'no':
-        return False
-    # If the user response is not y/yes/n/no, call this function again, printing an error
-    # message.
-    else:
-        binary_query("Invalid response.  Please type yes or no.", default=default)
-    
 
 class UserDataSet(object):
     '''
