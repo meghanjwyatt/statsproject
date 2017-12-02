@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+import numpy
+import scipy.stats
+import matplotlib.pyplot as pyplot
+
 '''
 Generate a quantile-quantile plot, given an array of data.
 '''
@@ -23,5 +27,22 @@ def run(dataset):
 
     normalized_dataset = (dataset - mean)/stdev
     normalized_dataset.sort()
+
+    n = normalized_dataset.shape[0]
+    quantiles = (numpy.arange(1, n+1, dtype=float)-0.5)/n
     
-    pass
+    theoretical_values = scipy.stats.norm.ppf(quantiles)
+
+    pyplot.plot(normalized_dataset, theoretical_values, 'o', color='black')
+
+    pyplot.xlabel("Input data (normalized)")
+    pyplot.ylabel("Normal distribution")
+
+    xmin = min(normalized_values.min(), theoretical_values.min())
+    xmax = max(normalized_values.max(), theoretical_values.max())
+
+    # Plot a diagonal line
+    pyplot.plot((xmin, xmax) (xmin, xmax), color='black')
+
+    pyplot.show()
+    return
