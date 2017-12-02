@@ -90,11 +90,21 @@ def input5c():
     '''
     Get input for a chi-squared test.
     '''
+    datasets = []
     msg1 = "Input the number of values in each category, for the first group."
-    dataset1 = UserDataSet(msg1).data
+    datasets.append(UserDataSet(msg1).data)
     msg2 = "Input the number of values in each category, for the second group."
-    dataset2 = UserDataSet(msg2).data
-    return dataset1, dataset2
+    datasets.append(UserDataSet(msg2).data)
+
+    dataset_idx = 3
+    add_dataset = binary_query("Enter another sample?")
+    while add_dataset:
+        msg = "Input the number of values in ech category, for group #{:d}"\
+              .format(dataset_idx)
+        datasets.append(UserDataSet(msg).data)
+        dataset_idx += 1
+
+    return datasets
 
 def input6():
     '''
