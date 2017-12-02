@@ -100,4 +100,3 @@ Analysis options:
             
 if __name__ == "__main__":
     StatsTool()
-
