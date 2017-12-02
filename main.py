@@ -1,7 +1,15 @@
 #!/usr/bin/env python
 import datainput
-import analysis1
-import analysis4
+import functions.analysis1
+import functions.analysis2
+import functions.analysis3
+import functions.analysis4
+import functions.analysis5a
+import functions.analysis5b
+import functions.analysis5c
+import functions.analysis6a
+import functions.analysis6b
+import functions.analysis6d
 
 
 class StatsTool(object):
@@ -47,40 +55,40 @@ Analysis options:
     def run(self):
         if self.analysistype == '1':
             dataset1, dataset2 = datainput.input1()
-            analysis1.run(dataset1, dataset2)
+            functions.analysis1.run(dataset1, dataset2)
             
         elif self.analysistype == '2':
             dataset = datainput.input2()
-            analysis2.run(dataset)
+            functions.analysis2.run(dataset)
             
         elif self.analysistype == '3':
             dataset1, dataset2 = datainput.input3()
-            analysis3.run(dataset1, dataset2)
+            functions.analysis3.run(dataset1, dataset2)
             
         elif self.analysistype == '4':
             dataset = datainput.input4()
-            analysis4.run(dataset)
+            functions.analysis4.run(dataset)
             
         elif self.analysistype == '5a':
             dataset, proposedmean = datainput.input5a()
-            analysis5a.run(dataset, proposedmean)
+            functions.analysis5a.run(dataset, proposedmean)
             
         elif self.analysistype == '5b':
             dataset1, dataset2 = datainput.input5b()
-            analysis5b.run(dataset1, dataset2)
+            functions.analysis5b.run(dataset1, dataset2)
             
         elif self.analysistype == '5c':
             datasets= datainput.input5c()
-            analysis5c.run(datasets)
+            functions.analysis5c.run(datasets)
             
         elif self.analysistype.startswith('6'):
             x_values, y_values, y_errors = dataipnut.input6()
             if self.analysistype == '6a':
-                analysis6a.run(x_values, y_values, y_errors)
+                functions.analysis6a.run(x_values, y_values, y_errors)
             elif self.analysistype == '6b':
-                analysis6b.run(x_values, y_values, y_errors)
+                functions.analysis6b.run(x_values, y_values, y_errors)
             elif self.analysistype == '6d':
-                analysis6d.run(x_values, y_values, y_errors)
+                functions.analysis6d.run(x_values, y_values, y_errors)
             else:
                 print("Invalid analysis type entered.")
                 exit(1)
