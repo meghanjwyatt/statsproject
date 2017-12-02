@@ -5,6 +5,19 @@ import numpy
 Compute mean confidence limits via simulation
 '''
 def run(dataset, alpha=0.05):
+    '''
+    -----------
+    Parameters:
+    -----------
+    dataset: (numpy.ndarray) a 1-dimensional numpy array of data; arbitrary 
+        length
+
+    -----------------
+    Function
+    -----------------
+    Prints to stdout the confidence limits for the mean of dataset, at the 
+    specified alpha level.
+    '''
     # number of synthetic samples to generate
     nsamples = 1000
     
