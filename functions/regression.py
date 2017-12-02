@@ -15,4 +15,16 @@ def linear(x, y, y_err):
     p: (float) The probability of observing a correlation coefficient at least
        as strong as that observed, given uncorrelated data.
     '''
-    raise NotImplementedError
+    degree = 1
+    if y_err is None:
+        weights = None
+    else:
+        weights = 1/y_err
+    (m, b), covmat = numpy.polyfit(x, y, degree, w=weights, cov=True)
+
+    # make sure this is correct
+    r = covmat[0,0]
+
+    p = # Need to find way to calculate p
+
+    return m, b, r, p
