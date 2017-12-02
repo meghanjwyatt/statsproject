@@ -6,7 +6,7 @@ import scipy.stats
 Compute the correlation coefficient for the x-values in x_values and y-values
 in y_values.
 '''
-def run(x_values, y_values, alpha=0.05):
+def run(x_values, y_values, y_errors, alpha=0.05):
     '''
     -----------
     Parameters:
@@ -14,6 +14,7 @@ def run(x_values, y_values, alpha=0.05):
     x_values: (numpy.ndarray) a 1-dimensional numpy array of x-values
     y_values: (numpy.ndarray) a 1-dimensional numpy array of y-values, where
         for each i=1,2,...,n x_values[i] is paired with y_values[i].
+    y_errors: (numpy.ndarray or None) the errors associated with each value
     alpha: (float) significance level for hypothesis testing
 
     -----------------
@@ -21,7 +22,10 @@ def run(x_values, y_values, alpha=0.05):
     -----------------
     Compute the pearson correlation coefficient and print to stdout.
     '''
-    r, p = scipy.stats.pearsonr(x_values, y_values)
+    if y_errors is None:
+        r, p = scipy.stats.pearsonr(x_values, y_values)
+    else:
+        raise NotImplementedError # Need to implement this 
 
     if  p < alpha:
         rejection_msg = "is rejected"
