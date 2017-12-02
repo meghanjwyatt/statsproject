@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import numpy
 import scipy.stats
+import regression
+import matplotlib.pyplot as pyplot
 
 '''
 Perform a linear regression.
@@ -20,4 +22,49 @@ def run(x_values, y_values, y_errors):
     -----------------
     Perform a linear regression and show the resulting plot.
     '''
-    
+    m, sigma_m, b, sigma_b, r, p = regression.linear(x_values, y_values, y_errors) 
+
+    def bestfit(x):
+        '''
+        Return the value of the best fit line at position x
+        '''
+        return m*x+b
+
+    residuals = y_values - bestfit(x_values)
+
+    xmin = x_values.min()
+    xmax = x_values.max()
+
+    ax1 = pyplot.subplot(1,2,1)
+    ax2 = pyplot.subplot(2,2,1)
+
+    # Plot line of best fit
+    ax1.plot((xmin, xmax), (bestfit(xmin), bestfit(xmax)), color='black') 
+    # plot original data
+    ax1.plot(x_values, y_values, 'o', color='black')
+    ax1.set_xlabel('x')
+    ax1.set_ylabel('y')
+    ax1.set_title('linear regression and input data')
+
+    # Plot residuals on separate plot
+    ax2.plot(x_values, residuals, 'o', color='black')
+    ax2.plot((xmin, xmax), (0, 0), color='black', linestyle='dashed')
+    ax2.set_xlabel('x')
+    ax2.set_ylabel('Residual from linear regression')
+    ax2.set_title('Residuals')
+
+    # Print a table for the user
+    msg = '''
+--------------------------------------------------------------------------------
+Linear regression
+--------------------------------------------------------------------------------
+slope: {:.04e} +/- {:.04e}
+y-intercept: {:.04e} +/- {:.04e}
+p: {:.04e}
+
+Note: ``p`` is the probability of observing a correlation at least as strong as
+      that observed in the specified samples, given that the variables are
+      uncorrelated.
+'''.format(m, sigma_m, b, sigma_b, p)
+    print(msg)
+    pyplot.show()
