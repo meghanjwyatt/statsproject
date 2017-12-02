@@ -111,3 +111,27 @@ def input6():
     else:
         y_errors = None
     return x_values, y_values, y_errors
+
+def input7():
+    '''
+    Get input for performing propagation of error.
+    Return the following:
+        variable_values: The value of variables a, b, c, ...     
+        variable_errors: The value of the errors associated with 
+                         variables a, b, c, ...
+        calculation_str: A string specifying the calculation to be performed.
+    '''
+    msg = '''
+--------------------------------------------------------------------------------
+Propagation of error 
+
+How to:
+    In the first data set, input the value of each variable. In the second data 
+    set, input the errors associated with each variable (in the corresponding 
+    order). Variables are labelled with letters a-z in the order in which they
+    are input; a maximum of 26 variables are allowed.  Once the variables and 
+    associated values are entered, specify the calculation 
+
+--------------------------------------------------------------------------------
+
+    msg1 = "Input values for
