@@ -2,6 +2,9 @@
 import numpy
 import scipy.stats
 
+'''
+Compute mean confidence limits based on student t or z distribution
+'''
 def run(dataset, alpha=0.05):
     '''
     -----------
