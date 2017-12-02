@@ -10,7 +10,9 @@ def linear(x, y, y_err):
     Returns:
     --------
     m: (float) The slope of the linear fit
+    sigma_m: (float) The error in the slope of the linear fit
     b: (float) The y-intercept of the linear fit
+    sigma_b: (float) The error in the y-intercept of the linear fit
     r: (float) The pearson correlation coefficient
     p: (float) The probability of observing a correlation coefficient at least
        as strong as that observed, given uncorrelated data.
