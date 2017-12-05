@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import datainput
+import io.analysis
 import functions.analysis1
 import functions.analysis2
 import functions.analysis3
@@ -33,7 +33,7 @@ By Meghan Wyatt and David Lee
 --------------------------------------------------------------------------------
 
 Analysis options:
-1) Plot a Q-Q plot for a set of x/y data
+1) Plot a Q-Q plot for a set of x data
 2) Compute mean confidence limits
 3) Compute confidences limits for the difference between samples
 4) Compute mean confidence limits for a sample via bootstrapping
@@ -54,35 +54,35 @@ Analysis options:
                                   
     def run(self):
         if self.analysistype == '1':
-            dataset1, dataset2 = datainput.input1()
-            functions.analysis1.run(dataset1, dataset2)
+            dataset = io.analysis.input1()
+            functions.analysis1.run(dataset)
             
         elif self.analysistype == '2':
-            dataset = datainput.input2()
+            dataset = io.analysis.input2()
             functions.analysis2.run(dataset)
             
         elif self.analysistype == '3':
-            dataset1, dataset2 = datainput.input3()
+            dataset1, dataset2 = io.analysis.input3()
             functions.analysis3.run(dataset1, dataset2)
             
         elif self.analysistype == '4':
-            dataset = datainput.input4()
+            dataset = io.analysis.input4()
             functions.analysis4.run(dataset)
             
         elif self.analysistype == '5a':
-            dataset, proposedmean = datainput.input5a()
+            dataset, proposedmean = io.analysis.input5a()
             functions.analysis5a.run(dataset, proposedmean)
             
         elif self.analysistype == '5b':
-            dataset1, dataset2 = datainput.input5b()
+            dataset1, dataset2 = io.analysis.input5b()
             functions.analysis5b.run(dataset1, dataset2)
             
         elif self.analysistype == '5c':
-            datasets= datainput.input5c()
+            datasets= io.analysis.input5c()
             functions.analysis5c.run(datasets)
             
         elif self.analysistype.startswith('6'):
-            x_values, y_values, y_errors = dataipnut.input6()
+            x_values, y_values, y_errors = io.analysis.input6()
             if self.analysistype == '6a':
                 functions.analysis6a.run(x_values, y_values, y_errors)
             elif self.analysistype == '6b':
