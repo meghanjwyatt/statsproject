@@ -25,10 +25,12 @@ def run(dataset, alpha=0.05):
 
     # Large sample size; n >= 30
     if n >= 30:
-        # Need to check
-        xmin, xmax = scipy.stats.norm.interval(1-alpha, 
-                                               loc=mean, 
-                                               scale=stdev/numpy.sqrt(n))
+        
+        zmin, zmax = scipy.stats.norm.interval(1-alpha, 
+                                               loc=0, 
+                                               scale=1)
+        upperlimit = mean + zmax*stdev/numpy.sqrt(n)
+        lowerlimit = mean + zmin*stdev/numpy.sqrt(n)
         
 
     # Small sample size; n < 30
@@ -47,6 +49,6 @@ Confidence limits for mean of input dataset
     mean:    {:.04e}
     lower limit: {:.04e}
     upper limit: {:.04e}
-    '''.format((1-alpha)*100, mean, xmin, xmax)
+    '''.format((1-alpha)*100, mean, lowerlimit, upperlimit)
     print(msg)
     return
