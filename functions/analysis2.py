@@ -35,11 +35,13 @@ def run(dataset, alpha=0.05):
 
     # Small sample size; n < 30
     else:
-        # Need to check
-        xmin, xmax = scipy.stats.t.interval(1-alpha,
+        
+        tmin, tmax = scipy.stats.t.interval(1-alpha,
                                             n-1, # degrees of freedom
-                                            loc=mean,
-                                            scale = stdev
+                                            loc=0,
+                                            scale = 1)
+        upperlimit = mean + tmax*stdev/numpy.sqrt(n)
+        lowerlimit = mean + tmin*stdev/numpy.sqrt(n)
 
     msg = '''
 -------------------------------------------
