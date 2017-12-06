@@ -1,17 +1,13 @@
 #!/usr/bin/env python
 import numpy
 import scipy.stats
+import regression
 
 '''
 Compute the correlation coefficient for the x-values in x_values and y-values
 in y_values.
 '''
-def covariance(x, y, w):
-    return numpy.sum(w*(x - numpy.average(x, weights=w))*(y - numpy.average(y, weights=w)))/w.sum()
-              
-def correlation(x, y, w):
-    return covariance(x,y,w)/numpy.sqrt(covariance(x,x,w)*covariance(y,y,w))
-              
+
 def run(x_values, y_values, y_errors):
     '''
     -----------
@@ -26,10 +22,8 @@ def run(x_values, y_values, y_errors):
     -----------------
     Compute the pearson correlation coefficient and print to stdout.
     '''
-    if y_errors is None:
-        r, p = scipy.stats.pearsonr(x_values, y_values)
-    else:
-        r = correlation(x_values, y_values, y_errors)
+    m, sigma_m, b, sigma_b, r, p = regression.linear(x_values, y_values, y_errors)
+    
     msg = '''
 --------------------------------------------------------------------------------
 Calculation of correlation coefficient for specified x-values and specified 
