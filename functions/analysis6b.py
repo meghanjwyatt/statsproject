@@ -3,8 +3,8 @@ import numpy
 import scipy.stats
 
 '''
-Compute the correlation coefficient for the x-values in x_values and y-values
-in y_values.
+Test the hypothesis that the correlation coefficient for the populations from 
+which x_values and y_values are sampled is zero.
 '''
 def run(x_values, y_values, y_errors, alpha=0.05):
     '''
@@ -20,7 +20,8 @@ def run(x_values, y_values, y_errors, alpha=0.05):
     -----------------
     Function
     -----------------
-    Compute the pearson correlation coefficient and print to stdout.
+    Compute the p-value for the hypothesis that the correlation coefficient from
+    which the x_values and y_values were sampled is zero.
     '''
     if y_errors is None:
         r, p = scipy.stats.pearsonr(x_values, y_values)
