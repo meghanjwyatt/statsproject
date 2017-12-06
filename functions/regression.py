@@ -31,7 +31,7 @@ def linear(x, y, y_err):
         weights = 1/y_err
     m, b = numpy.polyfit(x, y, degree, w=weights)
 
-    # make sure this is correct
+    # Calculate correlation coefficient and p-value
     if weights is None:
         r,p = scipy.stats.pearsonr(x,y)  
     else:
@@ -40,4 +40,15 @@ def linear(x, y, y_err):
         t = abs(t)
 
         p = 2*(1-scipy.stats.t.cdf(t,n-2,0,1))
-    return m, b, r, p
+        
+    #Calculate uncertainties in slope and intercept
+    y_fit =m*x+b
+    mse = numpy.sum((y-y_fit)**2)/(n-2)
+    
+    var_m = mse/(numpy.sum(x**2)-(numpy.sum(x))**2/n)
+    sigma_m = numpy.sqrt(var_m)
+    
+    var_b = mse*(1./n+x.mean()**2/numpy.sum((x-x.mean())**2))
+    sigma_b = numpy.sqrt(var_b)
+    
+    return m, sigma_m, b, sigma_b, r, p
