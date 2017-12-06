@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy
-import scipy.stats
+import regression
 
 '''
 Test the hypothesis that the correlation coefficient for the populations from 
@@ -22,10 +22,7 @@ def run(x_values, y_values, y_errors, alpha=0.05):
     Compute the p-value for the hypothesis that the correlation coefficient from
     which the x_values and y_values were sampled is zero.
     '''
-    if y_errors is None:
-        r, p = scipy.stats.pearsonr(x_values, y_values)
-    else:
-        raise NotImplementedError # Need to implement this 
+    m, sigma_m, b, sigma_b, r, p = regression.linear(x_values, y_values, y_errors)
 
     if  p < alpha:
         rejection_msg = "is rejected"
