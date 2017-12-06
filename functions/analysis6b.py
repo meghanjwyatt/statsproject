@@ -16,7 +16,6 @@ def run(x_values, y_values, y_errors, alpha=0.05):
         for each i=1,2,...,n x_values[i] is paired with y_values[i].
     y_errors: (numpy.ndarray or None) the errors associated with each value
     alpha: (float) significance level for hypothesis testing
-
     -----------------
     Function
     -----------------
@@ -38,8 +37,7 @@ Test of null hypothesis that correlation coefficient for specified x-values and
 specified y-values is equal to zero. 
 --------------------------------------------------------------------------------
 p-value: {:.04e}
-
 The null hypothesis that the correlation coefficient for the specified data is 
-equal to zero {:s}, at the significnce level alpha = {.04e}'''.format(p, rejection_msg, alpha))
+equal to zero {:s}, at the significnce level alpha = {:.04e}'''.format(p, rejection_msg, alpha)
     print(msg)
     return
