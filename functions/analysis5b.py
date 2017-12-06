@@ -36,13 +36,12 @@ def run(dataset1, dataset2, tails, alpha=0.05):
     else:
         n1 = dataset1.shape[0]
         n2 = dataset2.shape[0]
-        effective_n = numpy.sqrt(n1*n1/(n1+n2)) # need to check
-        sigma = #??? 
         difference = abs(dataset1.mean() - dataset2.mean())
-        p = 2*scipy.stats.norm.cdf(-difference, loc=0, scale=sigma)
 
-    # account for one-tailed vs two-tailed tests
-    p_value /= tails
+        z = (difference-0)/numpy.sqrt(dataset1.var(ddof=1)/n1+dataset2.var(ddof=1)/n2)
+        raw_p = 1-scipy.stats.norm.cdf(z,0,1))
+    
+    p_value = tails*raw_p
 
     if p_value < alpha:
         rejection_msg = "is rejected"
