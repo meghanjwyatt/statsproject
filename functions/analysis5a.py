@@ -6,7 +6,7 @@ import scipy.stats
 Test the null hypothesis that the mean of a dataset is equal to a specified
 value.
 '''
-def run(dataset, hypothesized_mean, tails, p=0.05):
+def run(dataset, hypothesized_mean, tails, alpha=0.05):
     '''
     -----------
     Parameters:
@@ -35,27 +35,17 @@ def run(dataset, hypothesized_mean, tails, p=0.05):
 
     # small data set
     if n < 30:
-        if mean >= hypothesized_mean:
-            raw_p = 1-scipy.stats.t.cdf(mean, 
-                                        n-1, # degrees of freedom
-                                        loc=hypothesized_mean,
-                                        shape=stdev)
-        else:
-            raw_p = scipy.stats.t.cdf(mean, 
-                                      n-1, # degrees of freedom
-                                      loc=hypothesized_mean,
-                                      shape=stdev)
+        t = (mean-hypothesized_mean)/(stdev/numpy.sqrt(n))
+        t = abs(t)
+        raw_p = 1-scipy.stats.t.cdf(t,n-1,0,1))
 
     # large data set; n >= 30
     else:
-        if mean >= hypothesized_mean:
-            raw_p = 1-scipy.stats.norm.cdf(mean,
-                                           loc=hypothesized_mean,
-                                           shape=stdev/numpy.sqrt(n))
-        else:
-            raw_p = scipy.stats.norm.cdf(mean,
-                                         loc=hypothesized_mean,
-                                         shape=stdev/numpy.sqrt(n))
+        z = (mean-hypothesized_mean)/(stdev/numpy.sqrt(n))
+        z = abs(z)
+        raw_p = 1-scipy.stats.norm.cdf(z,0,1))
+    
+    #Calculated true p-value based on number of tails
     p = raw_p * tails
 
     if p < alpha:
