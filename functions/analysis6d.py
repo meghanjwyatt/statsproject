@@ -34,8 +34,8 @@ def run(x_values, y_values, y_errors):
 
     xmin = x_values.min()
     xmax = x_values.max()
-    ymin = y_values.min()
-    ymax = y_values.max()
+    ymin = bestfit(x_values).min()
+    ymax = bestfit(x_values).max()
 
     ax1 = pyplot.subplot(1,2,1)
     ax2 = pyplot.subplot(2,2,1)
@@ -52,7 +52,7 @@ def run(x_values, y_values, y_errors):
     ax1.set_title('linear regression and input data')
 
     # Plot residuals on separate plot
-    ax2.plot(y_values, residuals, 'o', color='black')
+    ax2.plot(bestfit(x_values), residuals, 'o', color='black')
     ax2.plot((ymin, ymax), (0, 0), color='black', linestyle='dashed')
     ax2.set_xlabel('y')
     ax2.set_ylabel('Residual from linear regression')
