@@ -22,13 +22,7 @@ def run(datasets, alpha=0.05):
     Function
     -----------------
     '''
-    # small sample
-    if n < 30:
-    # large sample
-    else:
-
-    # account for one-tailed vs two-tailed tests
-    p_value /= tails
+    chi2,p,_,_ = scipy.stats.chi2_contingency(numpy.array(datasets))
 
     if p_value < alpha:
         rejection_msg = "is rejected"
@@ -36,8 +30,13 @@ def run(datasets, alpha=0.05):
         rejection_msg = "is not rejected"
     msg = '''
 --------------------------------------------------------------------------------
+Chi-squared Contingency Test for Relationship Between Rows and Columns
 --------------------------------------------------------------------------------
+chi-squared statistic: {:.04e}
 p-value: {:.04e}
 
-'''.format()
+The null hypothesis that there is no relationship between rows and columns
+{:s} at the alpha-level of {:.04e}.
+
+'''.format(chi2,p,rejection_msg,alpha)
     print(msg)
