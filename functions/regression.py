@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 import numpy
 
+def covariance(x, y, w):
+    return numpy.sum(w*(x - numpy.average(x, weights=w))*(y - numpy.average(y, weights=w)))/w.sum()
+              
+def correlation(x, y, w):
+    return covariance(x,y,w)/numpy.sqrt(covariance(x,x,w)*covariance(y,y,w))
+
 def linear(x, y, y_err):
     '''
     Perform a linear regression on the specified x values and y values,
@@ -17,16 +23,21 @@ def linear(x, y, y_err):
     p: (float) The probability of observing a correlation coefficient at least
        as strong as that observed, given uncorrelated data.
     '''
+    n = len(x)
     degree = 1
     if y_err is None:
         weights = None
     else:
         weights = 1/y_err
-    (m, b), covmat = numpy.polyfit(x, y, degree, w=weights, cov=True)
+    m, b = numpy.polyfit(x, y, degree, w=weights)
 
     # make sure this is correct
-    r = covmat[0,0]
+    if weights is None:
+        r,p = scipy.stats.pearsonr(x,y)  
+    else:
+        r = correlation(x,y,weights)
+        t = r*numpy.sqrt(n-2)/numpy.sqrt(1-r**2)
+        t = abs(t)
 
-    p = # Need to find way to calculate p
-
+        p = 2*(1-scipy.stats.t.cdf(t,n-2,0,1))
     return m, b, r, p
