@@ -37,8 +37,7 @@ def run(x_values, y_values, y_errors):
     ymin = bestfit(x_values).min()
     ymax = bestfit(x_values).max()
 
-    ax1 = pyplot.subplot(1,2,1)
-    ax2 = pyplot.subplot(2,2,1)
+    fig, (ax1, ax2) = pyplot.subplots(1, 2)
 
     # Plot line of best fit
     ax1.plot((xmin, xmax), (bestfit(xmin), bestfit(xmax)), color='black') 
