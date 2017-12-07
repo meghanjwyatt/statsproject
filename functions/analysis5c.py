@@ -22,9 +22,10 @@ def run(datasets, alpha=0.05):
     Function
     -----------------
     '''
-    chi2,p,_,_ = scipy.stats.chi2_contingency(numpy.array(datasets))
+    print(numpy.array(datasets))
+    chi2, p, _, _ = scipy.stats.chi2_contingency(numpy.array(datasets))
 
-    if p_value < alpha:
+    if p < alpha:
         rejection_msg = "is rejected"
     else:
         rejection_msg = "is not rejected"
