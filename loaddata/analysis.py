@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy
-import loaddata.query
+import loaddata.query as query
 from loaddata.data import UserDataSet
 
 def input1():
@@ -76,14 +76,14 @@ def input5c():
     msg1 = "Input the number of values in each category, for the first group."
     datasets.append(UserDataSet(msg1).data)
     msg2 = "Input the number of values in each category, for the second group."
-    datasets.append(UserDataSet(msg2).data)
+    datasets.append(UserDataSet(msg2, requiredsize=datasets[0].shape[0]).data)
 
     dataset_idx = 3
     add_dataset = query.binary_query("Enter another sample?")
     while add_dataset:
         msg = "Input the number of values in ech category, for group #{:d}"\
               .format(dataset_idx)
-        datasets.append(UserDataSet(msg).data)
+        datasets.append(UserDataSet(msg, requiredsize=datasets[0].shape[0]).data)
         dataset_idx += 1
 
     return datasets
