@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import numpy
+import scipy.stats
 
 def covariance(x, y, w):
     return numpy.sum(w*(x - numpy.average(x, weights=w))*(y - numpy.average(y, weights=w)))/w.sum()
