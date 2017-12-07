@@ -71,15 +71,15 @@ Analysis options:
             functions.analysis4.run(dataset)
             
         elif self.analysistype == '5a':
-            dataset, proposedmean = loaddata.analysis.input5a()
-            functions.analysis5a.run(dataset, proposedmean)
+            dataset, proposedmean, tails = loaddata.analysis.input5a()
+            functions.analysis5a.run(dataset, proposedmean, tails)
             
         elif self.analysistype == '5b':
-            dataset1, dataset2 = loaddata.analysis.input5b()
-            functions.analysis5b.run(dataset1, dataset2)
+            dataset1, dataset2, tails = loaddata.analysis.input5b()
+            functions.analysis5b.run(dataset1, dataset2, tails)
             
         elif self.analysistype == '5c':
-            datasets= loaddata.analysis.input5c()
+            datasets = loaddata.analysis.input5c()
             functions.analysis5c.run(datasets)
             
         elif self.analysistype.startswith('6'):
