@@ -130,8 +130,27 @@ How to:
     set, input the errors associated with each variable (in the corresponding 
     order). Variables are labelled with letters a-z in the order in which they
     are input; a maximum of 26 variables are allowed.  Once the variables and 
-    associated values are entered, specify the calculation 
+    associated uncertainties are entered, specify the calculation using the
+    following syntax:
+        + : addition
+        - : subtraction
+        * : multiplication
+        / : division
+        ** : exponentiation
+        ln(value) : natural logarithm of value
+        
+    For example, you could enter:
+        a+b: find the sum of the first two numbers entered, as well as the 
+             associated error.
+        a-b*c: find the difference between a and (b times c), as well as the
+               associated error.
+        a**b: calculate a to the b power, and the associated error
 
 --------------------------------------------------------------------------------
 
-    msg1 = "Input values for
+    msg1 = "Input the variables' values."
+    values = UserDataSet(msg1).data
+    msg2 = ("Input the uncertainties associated with each variable, in the same \n" +\
+            "order as which the values were specified")
+    uncertainties = UserDataSet(msg2).data
+    return values, uncertainties
