@@ -44,8 +44,8 @@ def run(dataset1, dataset2, alpha=0.05):
                                             dof,
                                             loc=0,
                                             scale = 1)
-        upperlimit = mean + tmax*numpy.sqrt(var1/numpy.sqrt(n1)+var2/numpy.sqrt(n2))
-        lowerlimit = mean + tmin*numpy.sqrt(var1/numpy.sqrt(n1)+var2/numpy.sqrt(n2))
+        upperlimit = dmean + tmax*numpy.sqrt(var1/numpy.sqrt(n1)+var2/numpy.sqrt(n2))
+        lowerlimit = dmean + tmin*numpy.sqrt(var1/numpy.sqrt(n1)+var2/numpy.sqrt(n2))
 
     msg = '''
 -------------------------------------------
