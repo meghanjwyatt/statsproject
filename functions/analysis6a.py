@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import numpy
 import scipy.stats
-import regression
+import functions.regression as regression
 
 '''
 Compute the correlation coefficient for the x-values in x_values and y-values

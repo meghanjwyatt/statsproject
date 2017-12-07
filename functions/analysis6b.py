@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy
-import regression
+import functions.regression as regression
 
 '''
 Test the hypothesis that the correlation coefficient for the populations from 

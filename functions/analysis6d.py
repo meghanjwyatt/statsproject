@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import numpy
 import scipy.stats
-import regression
+import functions.regression as regression
 import matplotlib.pyplot as pyplot
 
 '''
