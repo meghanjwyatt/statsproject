@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import numpy
 import loaddata.query
-import loaddata.data
+from loaddata.data import UserDataSet
 
 def input1():
     '''
