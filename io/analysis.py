@@ -152,5 +152,7 @@ How to:
     values = UserDataSet(msg1).data
     msg2 = ("Input the uncertainties associated with each variable, in the same \n" +\
             "order as which the values were specified")
-    uncertainties = UserDataSet(msg2).data
-    return values, uncertainties
+    uncertainties = UserDataSet(msg2, requiredsize=values.shape[0]).data
+    msg3 = "Input the expression for the desired calculation."
+    expression = query.string_query(msg3)
+    return values, uncertainties, expression
