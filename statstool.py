@@ -10,6 +10,7 @@ import functions.analysis5c
 import functions.analysis6a
 import functions.analysis6b
 import functions.analysis6d
+import functions.analysis7
 
 
 class StatsTool(object):
@@ -93,7 +94,8 @@ Analysis options:
                 print("Invalid analysis type entered.")
                 exit(1)
         elif self.analysistype == '7':
-            pass # This will need to be implemented
+            values, errors, expression = io.analysis.input7()
+            functions.analysis7.run(values, errors, expression)
         else:
             print("Invalid analysis type entered.")
             exit(1)
