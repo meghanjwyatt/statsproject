@@ -33,6 +33,8 @@ def run(values, errors, expression):
                                                                       repr(error))
        # Create the variable
        exec(to_evaluate)
+   # convert ``ln`` to numpy.log
+   expression = expression.replace('ln', 'numpy.log')
    result = eval(expression)
    print("Result of {:s} is: {:s}".format(expression, str(result)))
        
