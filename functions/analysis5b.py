@@ -29,13 +29,14 @@ def run(dataset1, dataset2, tails, alpha=0.05):
     n < 30) or z distributed (large sample, n > 30), with variance estimated
     from the sample variances of dataset1 and dataset2.
     '''
+    n1 = dataset1.shape[0]
+    n2 = dataset2.shape[0]
     # small sample
-    if n < 30:
+    if n1 < 30 or n2 < 30:
         t_statistic, p_value = scipy.stats.ttest_ind(dataset1, dataset2)
+        raw_p = p_value/2
     # large sample
     else:
-        n1 = dataset1.shape[0]
-        n2 = dataset2.shape[0]
         difference = abs(dataset1.mean() - dataset2.mean())
 
         z = (difference-0)/numpy.sqrt(dataset1.var(ddof=1)/n1+dataset2.var(ddof=1)/n2)
@@ -55,6 +56,6 @@ homoscedastic t test or z test.
 p-value: {:.04e}
 
 The null hypothesis that the means of the populations from which the specified 
-samples where drawn are the same {:s}, at the alpha={.04e} level.
+samples where drawn are the same {:s}, at the alpha={:.04e} level.
 '''.format(p_value, rejection_msg, alpha)
     print(msg)
