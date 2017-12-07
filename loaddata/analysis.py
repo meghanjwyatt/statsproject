@@ -7,14 +7,9 @@ def input1():
     '''
     Get input for a Q-Q plot of x/y data
     '''
-    msg1 = "Please enter the first sample."
-    dataset1 = UserDataSet(msg1).data
-    
-    msg2 = ("Please enter the second sample, which should be the same length "
-           "as the first sample.")
-    dataset2 = UserDataSet(msg2, requiredsize=dataset1.shape[0]).data
-    
-    return dataset1, dataset2
+    msg = "Please enter the first sample."
+    dataset = UserDataSet(msg).data
+    return dataset
 
 def input2():
     '''
