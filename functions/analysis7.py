@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import numpy
 import uncertainties
+from uncertainties import umath
 
 '''
 Calculate and print uncertainties in a user-defined expression.
@@ -34,7 +35,7 @@ def run(values, errors, expression):
        # Create the variable
        exec(to_evaluate)
    # convert ``ln`` to numpy.log
-   expression = expression.replace('ln', 'numpy.log')
+   expression = expression.replace('ln', 'umath.log')
    result = eval(expression)
    print("Result of {:s} is: {:s}".format(expression, str(result)))
        
