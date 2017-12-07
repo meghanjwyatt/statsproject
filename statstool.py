@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import io.analysis
+import loaddata.analysis
 import functions.analysis1
 import functions.analysis2
 import functions.analysis3
@@ -55,35 +55,35 @@ Analysis options:
                                   
     def run(self):
         if self.analysistype == '1':
-            dataset = io.analysis.input1()
+            dataset = loaddata.analysis.input1()
             functions.analysis1.run(dataset)
             
         elif self.analysistype == '2':
-            dataset = io.analysis.input2()
+            dataset = loaddata.analysis.input2()
             functions.analysis2.run(dataset)
             
         elif self.analysistype == '3':
-            dataset1, dataset2 = io.analysis.input3()
+            dataset1, dataset2 = loaddata.analysis.input3()
             functions.analysis3.run(dataset1, dataset2)
             
         elif self.analysistype == '4':
-            dataset = io.analysis.input4()
+            dataset = loaddata.analysis.input4()
             functions.analysis4.run(dataset)
             
         elif self.analysistype == '5a':
-            dataset, proposedmean = io.analysis.input5a()
+            dataset, proposedmean = loaddata.analysis.input5a()
             functions.analysis5a.run(dataset, proposedmean)
             
         elif self.analysistype == '5b':
-            dataset1, dataset2 = io.analysis.input5b()
+            dataset1, dataset2 = loaddata.analysis.input5b()
             functions.analysis5b.run(dataset1, dataset2)
             
         elif self.analysistype == '5c':
-            datasets= io.analysis.input5c()
+            datasets= loaddata.analysis.input5c()
             functions.analysis5c.run(datasets)
             
         elif self.analysistype.startswith('6'):
-            x_values, y_values, y_errors = io.analysis.input6()
+            x_values, y_values, y_errors = loaddata.analysis.input6()
             if self.analysistype == '6a':
                 functions.analysis6a.run(x_values, y_values, y_errors)
             elif self.analysistype == '6b':
@@ -94,7 +94,7 @@ Analysis options:
                 print("Invalid analysis type entered.")
                 exit(1)
         elif self.analysistype == '7':
-            values, errors, expression = io.analysis.input7()
+            values, errors, expression = loaddata.analysis.input7()
             functions.analysis7.run(values, errors, expression)
         else:
             print("Invalid analysis type entered.")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import numpy
-import query
-import data
+import loaddata.query
+import loaddata.data
 
 def input1():
     '''
@@ -147,6 +147,7 @@ How to:
         a**b: calculate a to the b power, and the associated error
 
 --------------------------------------------------------------------------------
+'''
 
     msg1 = "Input the variables' values."
     values = UserDataSet(msg1).data
