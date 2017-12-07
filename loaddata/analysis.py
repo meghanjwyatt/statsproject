@@ -47,7 +47,11 @@ def input5a():
     dataset = UserDataSet(msg).data
     proposedmean = float(input("Please enter the proposed mean and press then "
                                "press the enter key\n"))
-    return dataset, proposedmean
+    msg = "1 or 2-tailed test? (Enter 1 or 2, then press return)"
+    print(msg)
+    tails = input('>>> ')
+    tails = int(tails)
+    return dataset, proposedmean, tails
 
 def input5b():
     '''
@@ -57,7 +61,12 @@ def input5b():
     dataset1 = UserDataSet(msg1).data
     msg2 = "Please enter the values of the second sample."
     dataset2 = UserDataSet(msg2).data
-    return dataset1, dataset2
+
+    msg = "1 or 2-tailed test? (Enter 1 or 2, then press return)"
+    print(msg)
+    tails = input('>>> ')
+    tails = int(tails)
+    return dataset1, dataset2, tails
 
 def input5c():
     '''
