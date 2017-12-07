@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import numpy
+import scipy.stats
 
 def run(dataset1, dataset2, alpha=0.05):
     '''
@@ -26,8 +27,8 @@ def run(dataset1, dataset2, alpha=0.05):
     var2 = dataset2.var(ddof=1)
     dmean = mean1 - mean2
 
-    # Large sample size; n >= 30
-    if n >= 30:
+    # Large sample size; n1 >= 30 AND n2 >=30
+    if n1 >= 30 and n2 >= 30:
         
         zmin, zmax = scipy.stats.norm.interval(1-alpha, 
                                                loc=0, 
@@ -36,7 +37,7 @@ def run(dataset1, dataset2, alpha=0.05):
         lowerlimit = dmean + zmin*numpy.sqrt(var1/numpy.sqrt(n1)+var2/numpy.sqrt(n2))
         
 
-    # Small sample size; n < 30
+    # Small sample size; n1 or n2 < 30
     else:
         dof = int(((var1/n1+var2/n2)**2)/(((var1/n1)**2)/(n1-1)+((var2/n2)**2)/(n2-1)))
         tmin, tmax = scipy.stats.t.interval(1-alpha,
