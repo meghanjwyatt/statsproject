@@ -37,13 +37,13 @@ def run(dataset, hypothesized_mean, tails, alpha=0.05):
     if n < 30:
         t = (mean-hypothesized_mean)/(stdev/numpy.sqrt(n))
         t = abs(t)
-        raw_p = 1-scipy.stats.t.cdf(t,n-1,0,1))
+        raw_p = 1-scipy.stats.t.cdf(t,n-1,0,1)
 
     # large data set; n >= 30
     else:
         z = (mean-hypothesized_mean)/(stdev/numpy.sqrt(n))
         z = abs(z)
-        raw_p = 1-scipy.stats.norm.cdf(z,0,1))
+        raw_p = 1-scipy.stats.norm.cdf(z,0,1)
     
     #Calculated true p-value based on number of tails
     p = raw_p * tails
@@ -65,7 +65,7 @@ tails: {:d}
 p-value: {:.04e}
 
 The null hypothesis {:s}, at the specified alpha-level p = {:.04e}.
-'''.format(hypothesized_mean, mean, hypothesized mean, tails, p, 
+'''.format(hypothesized_mean, mean, hypothesized_mean, tails, p, 
            significance_msg, alpha)
     print(msg)
     return

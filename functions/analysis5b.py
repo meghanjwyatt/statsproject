@@ -39,7 +39,7 @@ def run(dataset1, dataset2, tails, alpha=0.05):
         difference = abs(dataset1.mean() - dataset2.mean())
 
         z = (difference-0)/numpy.sqrt(dataset1.var(ddof=1)/n1+dataset2.var(ddof=1)/n2)
-        raw_p = 1-scipy.stats.norm.cdf(z,0,1))
+        raw_p = 1-scipy.stats.norm.cdf(z,0,1)
     
     p_value = tails*raw_p
 
