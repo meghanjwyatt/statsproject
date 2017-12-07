@@ -22,7 +22,6 @@ def run(datasets, alpha=0.05):
     Function
     -----------------
     '''
-    print(numpy.array(datasets))
     chi2, p, _, _ = scipy.stats.chi2_contingency(numpy.array(datasets))
 
     if p < alpha:
