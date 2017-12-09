@@ -53,7 +53,7 @@ def run(x_values, y_values, y_errors):
     # Plot residuals on separate plot
     ax2.plot(bestfit(x_values), residuals, 'o', color='black')
     ax2.plot((ymin, ymax), (0, 0), color='black', linestyle='dashed')
-    ax2.set_xlabel('y')
+    ax2.set_xlabel('Fitted y')
     ax2.set_ylabel('Residual from linear regression')
     ax2.set_title('Residuals')
 
