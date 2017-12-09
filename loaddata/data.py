@@ -37,7 +37,12 @@ class UserDataSet(object):
     def load(self, msg=''):
         self.prompt_user(msg)
         if self.use_file_input:
-            self.load_from_file()
+            try:
+                self.load_from_file()
+            except FileNotFoundError:
+                print('File "{:s}" not found! Did you mean to enter data '
+                      'manually?'.format(self.inputfilepath))
+                self.load()
         else:
             self.load_manually()
         self.check_data()
