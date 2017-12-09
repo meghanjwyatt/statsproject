@@ -85,6 +85,7 @@ def input5c():
               .format(dataset_idx)
         datasets.append(UserDataSet(msg, requiredsize=datasets[0].shape[0]).data)
         dataset_idx += 1
+        add_dataset = query.binary_query("Enter another sample?")
 
     return datasets
 
