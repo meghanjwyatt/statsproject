@@ -45,7 +45,7 @@ def run(x_values, y_values, y_errors):
     if y_errors is None:
         ax1.plot(x_values, y_values, 'o', color='black')
     else:
-        ax1.errorbar(x_values, y_values, yerr = y_errors, color='black')
+        ax1.errorbar(x_values, y_values, yerr = y_errors, ls = 'None', marker = 'o', color='black')
     ax1.set_xlabel('x')
     ax1.set_ylabel('y')
     ax1.set_title('linear regression and input data')
